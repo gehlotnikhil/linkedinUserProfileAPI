@@ -7,17 +7,16 @@ app = Flask(__name__)
 def home():
     return "Home"
 
-@app.route("/get-user/<username>")
-def get_user(username):
+@app.route("/get-user/")
+def get_user():
     
-    api=Linkedin("tgj0464@gmail.com","Nikhil#393")
     try:
-        data = api.get_profile(username)
+        api=Linkedin("tgj0464@gmail.com","Nikhil#393")
+        data = api.get_profile("nikhilgehlot")
         return jsonify(data), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-    return jsonify(data),200
 
 
 if __name__ == "__main__":
