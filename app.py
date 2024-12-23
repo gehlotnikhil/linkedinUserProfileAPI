@@ -11,7 +11,11 @@ def home():
 def get_user(username):
     
     api=Linkedin("tgj0464@gmail.com","Nikhil#393")
-    data= (api.get_profile(username))
+    try:
+        data = api.get_profile(username)
+        return jsonify(data), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
     
     return jsonify(data),200
 
