@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from linkedin_api import Linkedin
-
+import logging
+logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 
 @app.route("/")
